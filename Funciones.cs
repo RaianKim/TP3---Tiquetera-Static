@@ -42,6 +42,7 @@ public static class Funciones
         }
         return fechaDate;
     }
+    
     public static int AbonoTotal(int numero)
     {
         int aux = 0;
@@ -63,4 +64,53 @@ public static class Funciones
         }
         return aux;
     }
+    public static void NumAbonoTotal(int Numero,int aux1,int aux2, int aux3, int aux4)
+    {
+    
+       switch(Numero)
+       {
+        case 1:
+            aux1++;
+        break;
+        case 2:
+            aux2++;
+        break;
+        case 3:
+            aux3++;
+        break;
+        case 4:
+            aux4++;
+        break;
+
+
+       }
+
+    }
+
+    private static string sePuedeoNO(int a, int b)
+    {
+        string c;
+        if(a == 0 || b == 0)
+        {
+            c = "Nada";
+        }
+        else
+        {
+            c = (a/b).ToString();
+        }
+        return c;
+    }
+    
+    public static string porcentaje(int UltimoIDEntrada,int aux1,int aux2, int aux3, int aux4)
+    {
+        
+        string aux = "Opcion 1 = "+ sePuedeoNO(aux1,UltimoIDEntrada) + "%, Opcion 2 = "+ sePuedeoNO(aux2,UltimoIDEntrada) + "%, Opcion 3 = "+ sePuedeoNO(aux3,UltimoIDEntrada) +"%, Opcion 4 = "+ sePuedeoNO(aux4,UltimoIDEntrada)+"%";
+        return aux;
+    }
+    public static string recaudoCadaTipo(int aux1,int aux2, int aux3, int aux4)
+    {
+        string aux = $"Opcion 1 = {aux1}, Opcion 2 = {aux2}, Opcion 3 = {aux3}, Opcion 4 = {aux4}";
+        return aux;
+    }
+
 }

@@ -5,24 +5,20 @@ public static class Ticketera
     static private int UltimoIDEntrada = 1;
     public static int DevolverUltimoID()
     {
-       return DicClientes.Keys.Last();
+       int aux = 1;
+       if(DicClientes.Count() > 0)
+       {
+        aux = DicClientes.Keys.Last();
+       }
+       return aux;
     }
     public static int AgregarCliente(Cliente cliente)
     {
-        UltimoIDEntrada=DevolverUltimoID();
-        UltimoIDEntrada++;
+        
+        if(UltimoIDEntrada != 1 || DicClientes.Count() >= 1)
+        {UltimoIDEntrada++;}
         DicClientes.Add(UltimoIDEntrada,cliente);
         return UltimoIDEntrada;
     }
-    static public List<string> EstadisticasTicketera = new List<string>();
-    
-    private static void cantClientes()
-    {
-     int aux1 = DicClientes.Count();
-     string aux2 = aux1.ToString();
-     EstadisticasTicketera.Add(aux2);
-    }
-    
-    
-
+   public static List<string> EstadisticasTicketera = new List<string>();
 }
