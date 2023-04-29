@@ -1,6 +1,6 @@
 ﻿using System.Threading;
-int aux1=0,aux2=0,aux3=0,aux4=0,aux=0,recaudoTotal = 0;
-int respuesta = 0;
+List<string> estadisticas = new List<string>();
+int aux = 0, respuesta = 0;
 string porcent;
 string recaudo;
 while(respuesta != 5)
@@ -39,23 +39,16 @@ int tipoEnt = Funciones.IngresarEnteroEnRango("Ingrese el tipo de entrada",1,4);
 int TotalAbon = Funciones.AbonoTotal(tipoEnt);
 Cliente cliente = new Cliente(dni,ape,nomb,fecha,tipoEnt,TotalAbon);
 int aux = Ticketera.AgregarCliente(cliente);
-recaudoTotal = recaudoTotal + TotalAbon;
-Funciones.NumAbonoTotal(tipoEnt,aux1,aux2,aux3,aux4);
 Console.WriteLine($"se a agregado exitosamente al cliente N°{aux}");
 Thread.Sleep(3000);
 }
 void MostrarEstadistica()
 {
-    Ticketera.EstadisticasTicketera.Add($"Cantidad de Clientes inscriptos: {aux}");
-    porcent = Funciones.porcentaje(aux,aux1,aux2,aux3,aux4);
-    Ticketera.EstadisticasTicketera.Add(porcent);
-    recaudo = Funciones.recaudoCadaTipo(aux1,aux2,aux3,aux4);
-    Ticketera.EstadisticasTicketera.Add(recaudo);
-    Ticketera.EstadisticasTicketera.Add($"Recaudacion Total: {recaudoTotal}");
+    estadisticas = Ticketera.MostarEstadisticas();
     
-    for (int i = 0; i < aux; i++)
+    for (int i = 0; i < estadisticas.Count; i++)
     {
-        Console.WriteLine(Ticketera.EstadisticasTicketera[i]);
+        Console.WriteLine(estadisticas[i]);
     }
     Thread.Sleep(4000);
 }
