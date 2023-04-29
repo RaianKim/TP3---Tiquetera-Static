@@ -6,7 +6,7 @@ public static class Funciones
         string texto = "";
         while (texto == "")
         {
-            Console.Write(msj);
+            Console.WriteLine(msj);
             texto = Console.ReadLine();
         }
         return texto;
@@ -16,7 +16,7 @@ public static class Funciones
         int entero=-1;
         while (entero <= 0)
         {   
-            Console.Write(msj);
+            Console.WriteLine(msj);
             int.TryParse(Console.ReadLine(), out entero);
         }
         return entero;
@@ -64,7 +64,8 @@ public static class Funciones
         }
         return aux;
     }
-
+    
+    
     
 
 }

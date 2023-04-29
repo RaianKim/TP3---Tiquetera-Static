@@ -21,6 +21,30 @@ public static class Ticketera
         return UltimoIDEntrada;
         
     }
+    public static Cliente  BuscarCliente(int IDEntrada)
+    {
+        int dni = 0;
+        string ape = ""; 
+        string nomb = "";
+        DateTime fecha = new DateTime();
+        int tipoEnt = 0;
+        int TotalAbon = 0;
+        bool estaONo = false;        
+            if(DicClientes.Keys.Contains(IDEntrada))
+            {
+                estaONo = true;
+                dni = DicClientes[IDEntrada].DNI;
+                ape = DicClientes[IDEntrada].Apellido;
+                nomb = DicClientes[IDEntrada].Nombre;
+                fecha = DicClientes[IDEntrada].FechaInscripcion;
+                tipoEnt = DicClientes[IDEntrada].TipoEntrada;
+                TotalAbon = DicClientes[IDEntrada].TotalAbonado;        
+            }
+        Cliente cliente = new Cliente(dni,ape,nomb,fecha,tipoEnt,TotalAbon);
+        Console.WriteLine(cliente);
+        return cliente;
+        
+    }
     public static List<string> MostarEstadisticas()
     {
         int AbonoTotal= 0;
@@ -53,7 +77,8 @@ public static class Ticketera
         estadisticas.Add($"Recaudación total: ${AbonoTotal}");
         return estadisticas;
     }
-
+    
+    
     
    
 }

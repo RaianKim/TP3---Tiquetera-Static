@@ -21,21 +21,23 @@ break;
 case 2:
 MostrarEstadistica();
 break;
-
+case 3:
+BuscarCliente();
+break;
 }
 
 }
 void NuevaInscrip()
 {
-int dni = Funciones.IngresarEntero("Ingrese su DNI");
-string ape = Funciones.IngresarTexto("Ingresar su apellido ");
-string nomb = Funciones.IngresarTexto("Ingrese su nombre "); 
-DateTime fecha = Funciones.IngresarFecha("Ingrese la fecha de inscripcion dd/mm/yyyy");
+int dni = Funciones.IngresarEntero("Ingrese su DNI:");
+string ape = Funciones.IngresarTexto("Ingresar su apellido: ");
+string nomb = Funciones.IngresarTexto("Ingrese su nombre: "); 
+DateTime fecha = Funciones.IngresarFecha("Ingrese la fecha de inscripcion dd/mm/yyyy: ");
 Console.WriteLine("Opción 1 - Día 1 , valor a abonar $15000");
 Console.WriteLine("Opción 2 - Día 2, valor a abonar $30000");
 Console.WriteLine("Opción 3 - Día 3, valor a abonar $10000");
 Console.WriteLine("Opción 4 - Full Pass, valor a abonar $40000");
-int tipoEnt = Funciones.IngresarEnteroEnRango("Ingrese el tipo de entrada",1,4);
+int tipoEnt = Funciones.IngresarEnteroEnRango("Ingrese el tipo de entrada: ",1,4);
 int TotalAbon = Funciones.AbonoTotal(tipoEnt);
 Cliente cliente = new Cliente(dni,ape,nomb,fecha,tipoEnt,TotalAbon);
 int aux = Ticketera.AgregarCliente(cliente);
@@ -50,5 +52,18 @@ void MostrarEstadistica()
     {
         Console.WriteLine(estadisticas[i]);
     }
+    Thread.Sleep(4000);
+}
+void BuscarCliente()
+{
+    Cliente cliente = new Cliente();
+    int x = Funciones.IngresarEntero("Escriba el ID que quiera encontrar");
+    cliente = Ticketera.BuscarCliente(x);
+    Console.WriteLine($"DNI: {cliente.DNI}");
+    Console.WriteLine($"Apellido: {cliente.Apellido}");
+    Console.WriteLine($"Nombre: {cliente.Nombre}");
+    Console.WriteLine($"Fecha de inscripcion: {cliente.FechaInscripcion}");
+    Console.WriteLine($"Tipo de entrada: {cliente.TipoEntrada}");
+    Console.WriteLine($"Abono: {cliente.TotalAbonado}");
     Thread.Sleep(4000);
 }
