@@ -24,6 +24,9 @@ break;
 case 3:
 BuscarCliente();
 break;
+case 4:
+CambiarEntradaDeUnCliente();
+break;
 }
 
 }
@@ -66,4 +69,21 @@ void BuscarCliente()
     Console.WriteLine($"Tipo de entrada: {cliente.TipoEntrada}");
     Console.WriteLine($"Abono: {cliente.TotalAbonado}");
     Thread.Sleep(4000);
+}
+void CambiarEntradaDeUnCliente()
+{
+    int a = Funciones.IngresarEntero("Escriba el ID que cambiar los datos");
+    int b = Funciones.IngresarEntero("Escriba ahora escriba al Tipo que quiera cambiar");
+    int c = Funciones.AbonoTotal(b);
+    bool aux = Ticketera.CambiarEntradaDeUnCliente(a,b,c);
+    if(aux == false)
+    {
+        Console.WriteLine("No se ha podido cambiar los datos debido a que el importe del nuevo tipo de entrada no es superior al que había comprado anteriormente.");
+    }
+    else
+    {
+        Console.WriteLine("Los cambios se han guardados");
+    }
+    Thread.Sleep(4000);
+
 }
